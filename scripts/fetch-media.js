@@ -54,7 +54,7 @@ async function fetchPage(folderId, pageToken) {
 function mapFile(file, folderId) {
   const thumb =
     upscaleThumb(file.thumbnailLink) ||
-    `https://drive.google.com/thumbnail?id=${file.id}&sz=w1000`;
+    `https://drive.google.com/thumbnail?id=${file.id}&sz=w400`;
   const isVideo = (file.mimeType || '').startsWith('video/');
   return {
     id: file.id,
@@ -72,7 +72,7 @@ function mapFile(file, folderId) {
 
 function upscaleThumb(link) {
   if (!link) return null;
-  let out = link.replace(/=s\d+(-[a-z])?(\?.*)?$/i, '=w1000');
+  let out = link.replace(/=s\d+(-[a-z])?(\?.*)?$/i, '=w400');
   if (!/[?&]authuser=/.test(out)) {
     out += out.includes('?') ? '&authuser=1' : '?authuser=1';
   }
