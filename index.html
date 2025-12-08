@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drive Media Gallery</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>Drive Media Gallery</h1>
+      <p>Photos & videos served from a public Google Drive folder.</p>
+    </header>
+
+    <main>
+      <section id="grid" class="grid" aria-live="polite"></section>
+      <div id="status" class="status">Loading media...</div>
+    </main>
+
+    <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+      <button class="close" aria-label="Close" onclick="Gallery.close()">×</button>
+      <div id="modal-content"></div>
+      <div class="modal-actions">
+        <a id="modal-download" class="download" href="#" target="_blank" rel="noopener">Download</a>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

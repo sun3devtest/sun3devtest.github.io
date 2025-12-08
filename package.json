@@ -1,0 +1,13 @@
+{
+  "name": "drive-gallery",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Static Google Drive-powered gallery for GitHub Pages.",
+  "scripts": {
+    "fetch-media": "node scripts/fetch-media.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

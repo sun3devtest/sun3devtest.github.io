@@ -1,0 +1,30 @@
+name: Update media.json
+
+on:
+  schedule:
+    - cron: '0 3 * * *' # daily at 03:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-media:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Install (no dependencies)
+        run: npm install
+      - name: Fetch media.json
+        env:
+          FOLDER_ID: ${{ secrets.FOLDER_ID }}
+          API_KEY: ${{ secrets.API_KEY }}
+        run: npm run fetch-media
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update media.json"
+          file_pattern: public/media.json
